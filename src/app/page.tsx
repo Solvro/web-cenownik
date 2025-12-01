@@ -2,7 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import Cards from "@/components/cards";
 import Component from "@/components/example-chart";
+import Navbar from "@/components/navbar";
 import { Button } from "@/components/ui/button";
 import { IResponse } from "@/types";
 
@@ -14,13 +16,9 @@ export default async function Home() {
   const result = (await data.json()) as IResponse[];
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center gap-10 overflow-hidden">
-      <h1>Mój fajny scraper</h1>
-      <ul>
-        {result.map((res) => (
-          <li>{res.name}</li>
-        ))}
-      </ul>
+    <div className="flex min-h-screen flex-col items-center gap-10 overflow-hidden">
+      <Navbar />
+      <Cards />
     </div>
   );
 }
